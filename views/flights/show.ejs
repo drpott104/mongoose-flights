@@ -1,0 +1,40 @@
+<%- include('../partials/header') %>
+
+<section id="show-page">
+  <div>Airline</div>
+  <div>Airport</div>
+  <div>Flight Number </div>
+  <div>Departure</div>
+  <div>Arrival </div>
+  <div><%= flight.airline %></div>
+  <div><%= flight.airport %></div>
+  <div><%= flight.number %></div>
+  <div><%= flight.departs %></div>
+  <div><%= flight.arrival %></div>
+  <% if (flight.destination) { %>
+    <% console.log('active') %>
+    <div><%= flight.destination %></div>
+  <% } %>
+</section>
+
+<form id="destination" action="/flights/<%= flight._id %>" method="PUT">
+  <label>Airport</label>
+  <select name="airport">
+    <option value="AUS">AUS</option>
+    <option value="DEN">DEN</option>
+    <option value="DFW">DFW</option>
+    <option value="LAX">LAX</option>
+    <option value="SAN">SAN</option>
+  </select>
+  <label>Arrival Time</label>
+  <input type="datetime-local" name="arrival">
+  <input type="submit" value="Add Arrival Info">
+</form>
+
+<div>
+<% if (flight.arrival) { %>
+  <% console.log(flight.arrival) %>
+<% } %>
+</div>
+
+<%- include('../partials/footer') %>
